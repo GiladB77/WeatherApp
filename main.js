@@ -1,6 +1,7 @@
 const api = {
-    key: "bcd696b99e40703a79b644515f95e72d",
-    base: "https://api.openweathermap.org/data/2.5/"
+    // key: "bcd696b99e40703a79b644515f95e72d",
+    base: "https://goweather.herokuapp.com/"
+    
 }
 
 const searchbox = document.querySelector('.search-box');
@@ -14,7 +15,7 @@ function setQuery(evt){
 }
 
 function getResults(query){
-    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+    fetch(`${api.base}weather/${query}`)
     .then(weather => {
         return weather.json();
     }).then(displayWeather);
@@ -23,20 +24,20 @@ function getResults(query){
 function displayWeather(weather){
     console.log(weather);
     let city = document.querySelector('.location .city');
-    city.innerText = `${weather.name}, ${weather.sys.country}`
+    city.innerText = searchbox.value;
 
     let now = new Date();
     let date = document.querySelector('.location .date');
     date.innerText = dateBuilder(now);
 
     let temp = document.querySelector('.current .temp');
-    temp.innerText = `${Math.round(weather.main.temp)}°c`;
+    temp.innerText = weather.temperature.replace("+","").replace(" ","");
 
     let weather_el = document.querySelector('.current .weather');
-    weather_el.innerText = weather.weather[0].main;
+    weather_el.innerText = weather.description;
 
     let hilow = document.querySelector('.hi-low');
-    hilow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`
+    hilow.innerText = 'Wind: '+weather.wind
 }
 
 function dateBuilder(d){

@@ -28,11 +28,11 @@ header {
 
 header input {
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
     padding: 10px 15px;
     border: none;
     outline: none;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
 
     color: black;
@@ -56,9 +56,10 @@ main {
 
 .location .city {
     color: white;
-    font-size: 34px;
-    font-weight: 500;
+    font-size: 40px;
+    font-weight: 700;
     margin-bottom: 5px;
+    text-shadow: 0px 5px rgba(0, 0, 0, 0.6);
 }
 
 .location .date {
